@@ -2,7 +2,7 @@
 apiVersion: helm.fluxcd.io/v1
 kind: HelmRelease
 metadata:
-  name: mywebserver
+  name: swissknife
   namespace: nginx
   annotations:
     flux.weave.works/automated: "true"
