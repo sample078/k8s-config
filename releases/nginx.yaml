@@ -11,17 +11,12 @@ metadata:
     flux.weave.works/locked_msg: '"Halt updates for now"'
     flux.weave.works/locked_user: User Name <user@example.com>
 spec:
-  releaseName: mywebserver
+  releaseName: swissknife
   chart:
-    repository: https://charts.bitnami.com/bitnami/
-    name: nginx
-    version: 3.3.2
+    repository: http://a5062b042bd0a4470bbda9b8fa6b16b2-1419389553.eu-central-1.elb.amazonaws.com:8080/
+    name: swissknife
+    version: 0.0.1
   values:
-    usePassword: true
-    image:
-      registry: docker.io
-      repository: bitnami/nginx
-      tag: 1.16.0-debian-9-r46
     service:
       type: LoadBalancer
       port: 80
