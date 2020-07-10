@@ -3,7 +3,7 @@ apiVersion: helm.fluxcd.io/v1
 kind: HelmRelease
 metadata:
   name: swissknife
-  namespace: nginx
+  namespace: canary-deploy
   annotations:
     flux.weave.works/automated: "true"
     flux.weave.works/tag.nginx: semver:~1.16
