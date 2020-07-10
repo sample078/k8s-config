@@ -40,37 +40,37 @@ spec:
     stepWeight: 5
     # Istio Prometheus checks
     metrics:
-      - name: error-rate
-        templateRef:
-          name: error-rate
-          namespace: istio-system
-        thresholdRange:
-          max: 1
-        interval: 30s
-      - name: latency
-        templateRef:
-          name: latency
-          namespace: istio-system
-        thresholdRange:
-          max: 500
-        interval: 30s
+    - name: error-rate
+      templateRef:
+        name: error-rate
+        namespace: istio-system
+      thresholdRange:
+        max: 1
+      interval: 30s
+    - name: latency
+      templateRef:
+        name: latency
+        namespace: istio-system
+      thresholdRange:
+        max: 500
+      interval: 30s
     # tests
     webhooks:
-      - name: conformance-test
-        type: pre-rollout
-        timeout: 15s
-        url: http://flagger-loadtester.prod/
-        metadata:
-          type: bash
-          cmd: "curl -sd 'test' http://backend-canary.prod:9898/token | grep token"
-      - name: load-test
-        type: rollout
-        timeout: 15s
-        url: http://flagger-loadtester.prod/
-        metadata:
-          type: cmd
-          cmd: "hey -z 1m -q 10 -c 2 http://backend-canary.prod:9898/"
-          logCmdOutput: "true"
+    - name: conformance-test
+      type: pre-rollout
+      timeout: 15s
+      url: http://flagger-loadtester.prod/
+      metadata:
+        type: bash
+        cmd: "curl -sd 'test' http://backend-canary.prod:9898/token | grep token"
+    - name: load-test
+      type: rollout
+      timeout: 15s
+      url: http://flagger-loadtester.prod/
+      metadata:
+        type: cmd
+        cmd: "hey -z 1m -q 10 -c 2 http://backend-canary.prod:9898/"
+        logCmdOutput: "true"
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -99,7 +99,7 @@ spec:
     spec:
       containers:
       - name: backend
-        image: stefanprodan/podinfo:3.1.0
+        image: stefanprodan/podinfo:3.1.1
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 9898
