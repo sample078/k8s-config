@@ -15,7 +15,7 @@ spec:
   chart:
     repository: http://a5062b042bd0a4470bbda9b8fa6b16b2-1419389553.eu-central-1.elb.amazonaws.com:8080/
     name: swissknife
-    version: 0.0.16
+    version: 0.0.17
   values:
     service:
       type: LoadBalancer
